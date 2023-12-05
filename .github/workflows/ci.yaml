@@ -17,5 +17,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: alldeps
+          name: WikiMarkdownCompiled-7.4
           path: ./
