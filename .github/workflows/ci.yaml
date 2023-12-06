@@ -26,7 +26,7 @@ jobs:
       - name: Move to folder
         run: |
           mkdir WikiMarkdown
-          mv -r * .* WikiMarkdown/
+          mv * .* WikiMarkdown/
       - uses: actions/upload-artifact@v3
         with:
           name: WikiMarkdown-${{steps.json_properties.outputs.version}}-PHP${{matrix.php_version}}
