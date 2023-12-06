@@ -3,8 +3,16 @@ name: CI
 on: [push]
 
 jobs:
-  build-test:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: 
+          - 7.4
+          - 8.0
+          - 8.1
+          - 8.2
+          - 8.3
 
     steps:
       - uses: actions/checkout@v3
@@ -12,12 +20,16 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@master
         with:
-          php_version: '7.4'
+          php_version: ${{ matrix.php_version }}
           dev: "no"
-
+      - name: get properties
+        id: json_properties
+        uses: ActionsTools/read-json-action@main
+        with:
+          file_path: "extention.json"
       - uses: actions/upload-artifact@v3
         with:
-          name: WikiMarkdownCompiled-7.4
+          name: WikiMarkdown.php${{matrix.php_version}}.{{steps.json_properties.outputs.version}}
           path: |
             ./
             !.*
