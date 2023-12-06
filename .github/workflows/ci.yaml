@@ -8,11 +8,11 @@ jobs:
     strategy:
       matrix:
         php_version: 
-          - 7.4
-          - 8.0
-          - 8.1
-          - 8.2
-          - 8.3
+          - '7.4'
+          - '8.0'
+          - '8.1'
+          - '8.2'
+          - '8.3'
 
     steps:
       - uses: actions/checkout@v3
@@ -26,7 +26,7 @@ jobs:
         id: json_properties
         uses: ActionsTools/read-json-action@main
         with:
-          file_path: "extention.json"
+          file_path: "extension.json"
       - uses: actions/upload-artifact@v3
         with:
           name: WikiMarkdown.php${{matrix.php_version}}.{{steps.json_properties.outputs.version}}
