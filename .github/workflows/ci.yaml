@@ -27,7 +27,7 @@ jobs:
         with:
           name: WikiMarkdown-${{steps.json_properties.outputs.version}}-PHP${{matrix.php_version}}
           path: |
-            /__w/
+            /home/runner/work/WikiMarkdown
             !.*
             !DOCKER*
             !*.log
