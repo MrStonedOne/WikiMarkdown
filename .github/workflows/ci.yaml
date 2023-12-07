@@ -23,11 +23,13 @@ jobs:
         uses: ActionsTools/read-json-action@main
         with:
           file_path: "extension.json"
+      - name: cd to parent
+        run: "cd ../.."
       - uses: actions/upload-artifact@v3
         with:
           name: WikiMarkdown-${{steps.json_properties.outputs.version}}-PHP${{matrix.php_version}}
           path: |
-            ../
+            .
             !.*
             !DOCKER*
             !*.log
